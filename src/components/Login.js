@@ -20,13 +20,10 @@ export default function Login() {
       password,
     };
 
-    console.log(formData);
-
     axios
       .post(url, formData)
       .then((response) => {
         if (response.status === 200) {
-          console.log(response);
           const userData = {
             ...response.data,
             type: "Admin",
@@ -53,8 +50,7 @@ export default function Login() {
           });
         };
       })
-      .catch((e) => {
-        console.log(e);
+      .catch(() => {
         Swal.fire({
           icon: "error",
           showCancelButton: false,
