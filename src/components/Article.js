@@ -1,10 +1,12 @@
 import React from "react";
 
-function Article() {
+function Article(article) {
   return (
-    <>
-      <h1>I am an article</h1>
-    </>
+    <li>
+      <h1>{article.article.title}</h1>
+      <p>{article.article.date}</p>
+      <p>{article.article.content}</p>
+    </li>
   );
 }
 export default Article;
