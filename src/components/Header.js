@@ -9,6 +9,7 @@ import HomeIcon from "@material-ui/icons/Home";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
+import logo from "../image/logo.jpg";
 import "./header.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -27,6 +28,7 @@ function Header() {
   return (
     <div className={classes.heroContent}>
       <Container maxWidth="sm">
+        <img src={logo} alt="Logo" />
         <Typography
           component="h1"
           variant="h2"
@@ -51,14 +53,14 @@ function Header() {
             <Grid item>
               <Button variant="outlined" color="primary">
                 <a href={"https://www.linkedin.com/in/benjamin-dexant/"}>
-                  <LinkedInIcon color="inherit" /> Mon LinkedIn
+                  <LinkedInIcon color="inherit" /> My LinkedIn
                 </a>
               </Button>
             </Grid>
             <Grid item>
               <Button variant="outlined" color="primary">
                 <a href={"https://github.com/BenjaminDexant"}>
-                  <GitHubIcon color="inherit" /> Mon GitHub
+                  <GitHubIcon color="inherit" /> My GitHub
                 </a>
               </Button>
             </Grid>
