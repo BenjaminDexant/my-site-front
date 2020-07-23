@@ -4,7 +4,11 @@ import Article from "./Article";
 function MainPage() {
   return (
     <>
-      <Article />
+      <ul>
+        {articles.map((article) => {
+          return <Article article={article} key={article.id_article} />;
+        })}
+      </ul>
     </>
   );
 }
