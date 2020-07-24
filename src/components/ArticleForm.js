@@ -5,6 +5,7 @@ import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "axios";
 
@@ -39,46 +40,53 @@ export default function ArticleForm() {
   const [imageUrl1, setImageUrl1] = useState("");
   const [imageUrl2, setImageUrl2] = useState("");
 
+  const history = useHistory();
+
+
   const handleClick = (e) => {
     e.preventDefault();
     const url = `http://localhost:4000/articles`;
     const formData = {
       title,
       content,
-      imageUrl1,
-      imageUrl2,
+      image_url_1: imageUrl1,
+      image_url_2: imageUrl2,
     };
+    console.log(formData);
     axios
       .post(url, formData)
       .then((response) => {
         if (response.status === 200) {
-        const NewArticle = {
-          title: "",
-          content: "",
-          image_url_1: "",
-          image_url_2: "",
+          const newArticle = {
+            title: "",
+            content: "",
+            image_url_1: "",
+            image_url_2: "",
+            date: "",
+          };
+          console.log(newArticle);
+          Swal.fire({
+            icon: "success",
+            showCancelButton: false,
+            showConfirmButton: false,
+            text: `Article added !`,
+            timer: 1000,
+            backdrop: `rgba(0,0,0,0.5)`,
+          });
+          return history.push("/");
+        }
+        return () => {
+          Swal.fire({
+            icon: "error",
+            showCancelButton: false,
+            showConfirmButton: false,
+            text: "Invalid datas 😕",
+            timer: 1000,
+            backdrop: "rgba(0,0,0,0.5)",
+          });
         };
-        Swal.fire({
-          icon: "success",
-          showCancelButton: false,
-          showConfirmButton: false,
-          text: `Article added !`,
-          timer: 1000,
-          backdrop: `rgba(0,0,0,0.5)`,
-        });
-      }
-      return () => {
-        Swal.fire({
-          icon: "error",
-          showCancelButton: false,
-          showConfirmButton: false,
-          text: "Invalid datas 😕",
-          timer: 1000,
-          backdrop: "rgba(0,0,0,0.5)",
-        });
-      };
-    })
-      .catch((error) => {
+      })
+      .catch(() => {
         Swal.fire({
           icon: "error",
           showCancelButton: false,
@@ -97,7 +105,7 @@ export default function ArticleForm() {
         <Typography component="h1" variant="h5">
           Create an article
         </Typography>
-        <form className={classes.form} >
+        <form className={classes.form}>
           <TextField
             variant="outlined"
             margin="normal"
