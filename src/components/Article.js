@@ -28,6 +28,8 @@ const useStyles = makeStyles((theme) => ({
 
 function Article(article, key) {
   const classes = useStyles();
+  const userData = JSON.parse(localStorage.getItem("user"));
+
   return (
     <Grid item key={key} xs={12} sm={6} md={4}>
       <Card className={classes.card}>
@@ -47,9 +49,13 @@ function Article(article, key) {
           <Button size="small" color="primary">
             View
           </Button>
-          <Button size="small" color="primary">
-            Edit
-          </Button>
+          {userData ? (
+            <Button size="small" color="primary">
+              Edit
+            </Button>
+          ) : (
+            <></>
+          )}
         </CardActions>
       </Card>
     </Grid>

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Article from "./Article";
 import ArticleForm from "./ArticleForm";
-import Grid from '@material-ui/core/Grid';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
+import Grid from "@material-ui/core/Grid";
+import { makeStyles } from "@material-ui/core/styles";
+import Container from "@material-ui/core/Container";
 import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
@@ -31,14 +31,14 @@ export default function MainPage() {
   }, []);
   return (
     <>
-    <Container className={classes.cardGrid} maxWidth="md">
-      <Grid container spacing={4}>
-        {articles.map((article) => {
-          return <Article article={article} key={article.id_article} />;
-        })}
-      </Grid>
-    </Container>
-    <ArticleForm />
-      </>
+      <Container className={classes.cardGrid} maxWidth="md">
+        <Grid container spacing={4}>
+          {articles.map((article) => {
+            return <Article article={article} key={article.id_article} />;
+          })}
+        </Grid>
+      </Container>
+      <ArticleForm />
+    </>
   );
 }

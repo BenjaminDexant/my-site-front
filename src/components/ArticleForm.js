@@ -42,10 +42,10 @@ export default function ArticleForm() {
 
   const history = useHistory();
 
+  const userData = JSON.parse(localStorage.getItem('user'));
+
   const handleClick = (e) => {
     e.preventDefault();
-    const userData = JSON.parse(localStorage.getItem('user'));
-    console.log(userData);
     const url = `http://localhost:4000/articles`;
     const formData = {
       title,
@@ -100,7 +100,7 @@ export default function ArticleForm() {
       });
   };
 
-  return (
+  if (userData) { return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
@@ -171,4 +171,5 @@ export default function ArticleForm() {
       </div>
     </Container>
   );
+ } else { return null}
 }
