@@ -42,15 +42,17 @@ export default function ArticleForm() {
 
   const history = useHistory();
 
-
   const handleClick = (e) => {
     e.preventDefault();
+    const userData = JSON.parse(localStorage.getItem('user'));
+    console.log(userData);
     const url = `http://localhost:4000/articles`;
     const formData = {
       title,
       content,
       image_url_1: imageUrl1,
       image_url_2: imageUrl2,
+      id_admin: userData.id_admin,
     };
     console.log(formData);
     axios
