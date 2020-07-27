@@ -19,7 +19,6 @@ export default function Login() {
       name,
       password,
     };
-
     axios
       .post(url, formData)
       .then((response) => {

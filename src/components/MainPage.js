@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Article from "./Article";
+import ArticleForm from "./ArticleForm";
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
@@ -29,6 +30,7 @@ export default function MainPage() {
       });
   }, []);
   return (
+    <>
     <Container className={classes.cardGrid} maxWidth="md">
       <Grid container spacing={4}>
         {articles.map((article) => {
@@ -36,5 +38,7 @@ export default function MainPage() {
         })}
       </Grid>
     </Container>
+    <ArticleForm />
+      </>
   );
 }
